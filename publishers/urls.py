@@ -3,5 +3,5 @@ from django.urls import path
 from publishers.views import PublisherListView
 
 urlpatterns = [
-    path('publishers/', PublisherListView.as_view()),
+    path('', PublisherListView.as_view()),
 ]
