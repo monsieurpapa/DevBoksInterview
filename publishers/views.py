@@ -4,6 +4,9 @@ from publishers.models import Publisher
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from .models import Publisher
+from .forms import PublisherModelForm
+
+
 
 # Create your views here.
 #generic list view of publishers
@@ -18,15 +21,21 @@ class PublisherDetailView(DetailView):
     #model = Publisher
     template_name = 'publishers/publisher-detail.html'
     context_object_name = 'publisher'
+    queryset = Publisher.objects.all()
 
-    def get_object(self, queryset=None):
-        name = self.kwargs.get('name')
-        return Publisher.objects.get(name=name.lower())
+    # def get_object(self, queryset=None):
+    #     id = self.kwargs.get('id')
+    #     return Publisher.objects.get(id=id)
 
-# class PublisherCreateView(CreateView):
-#     model = Publisher
-#     form_class = PublisherForm
-#     template_name = 'publishers/create.html'
+class PublisherCreateView(CreateView):
+    template_name = 'publishers/publisher_create.html'
+    form_class = PublisherModelForm
+    queryset = Publisher.objects.all()
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+    
 
 
 
