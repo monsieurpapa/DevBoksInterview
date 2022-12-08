@@ -1,9 +1,14 @@
-
+{% extends "publishers/base.html" %}
 {% block content %}
-    <h2>Publishers</h2>
+<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">All Publishers</h1>
+    <p class="lead">A list of publishers .</p>
+</div>
+<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <ul>
-        {% for publisher in object_list %}
+        {% for publisher in my_favorite_publishers %}
             <li>{{ publisher.name }}</li>
         {% endfor %}
     </ul>
+</div>
 {% endblock %}
