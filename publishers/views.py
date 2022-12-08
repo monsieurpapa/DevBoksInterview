@@ -31,10 +31,14 @@ class PublisherCreateView(CreateView):
     template_name = 'publishers/publisher_create.html'
     form_class = PublisherModelForm
     queryset = Publisher.objects.all()
+    # success_url="/"
 
     def form_valid(self, form):
         print(form.cleaned_data)
         return super().form_valid(form)
+    
+    # def get_success_url(self) :
+    #     return self.success_url
     
 
 
